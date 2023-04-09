@@ -1,11 +1,12 @@
 import React, {useState } from 'react';
 import { View, StyleSheet, ImageBackground, TextInput, Text, TouchableOpacity, 
-    KeyboardAvoidingView, Platform, Keyboard,  
+    KeyboardAvoidingView, Platform, Keyboard,
 } from "react-native";
+import { StatusBar} from 'expo-status-bar';
 
 const buttonImg = require('../../assets/images/add.png');
 
-export default function RegistrationScreen ({changeScreen}) {
+export default function RegistrationScreen ({navigation}) {
     const [isShowKeyboard, setIsShowKeyboard] = useState(false);
     const [login, setLogin] = useState("");
     const [email, setEmail] = useState("");
@@ -22,6 +23,9 @@ export default function RegistrationScreen ({changeScreen}) {
       setLogin('');
       setEmail('');
       setPassword('');
+      navigation.navigate("Home", {
+        screen: 'PostsScreen'
+       });
     };
 
     const showPassword = () => {
@@ -32,6 +36,8 @@ export default function RegistrationScreen ({changeScreen}) {
     };
 
     return (
+      <View style={styles.wrapBg}>
+      <ImageBackground source={require("../../assets/bg-image.jpg")} style={styles.bgImg}>
      <KeyboardAvoidingView 
      behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.wrapKey}>
      <View style={styles.container} >
@@ -68,15 +74,28 @@ export default function RegistrationScreen ({changeScreen}) {
      <Text style={styles.text}>Register</Text>
      </TouchableOpacity>
     
-    <TouchableOpacity activeOpacity={0.5} style={styles.linkOpacity} onPress={() => changeScreen(0)}>
+    <TouchableOpacity activeOpacity={0.5} style={styles.linkOpacity} onPress={() => navigation.navigate("Login")}>
         <Text style={styles.linkText}>Already have an account? Log in</Text>
     </TouchableOpacity>
     </View>
     </KeyboardAvoidingView>
+    </ImageBackground>
+    <StatusBar style="auto"/>
+    </View>
     )
 };
 
 const styles = StyleSheet.create({
+    wrapBg: {
+      flex: 1,
+      alignItems: "center",
+    },
+    bgImg: {
+      flex: 1,
+      resizeMode: 'cover',
+      justifyContent: "flex-end",
+      width: "100%",
+    },
     wrapper: {
       marginTop: -60,
       height: 120,

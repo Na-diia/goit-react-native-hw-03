@@ -7,9 +7,11 @@ import { View,
         TouchableOpacity, 
         Text, 
         Keyboard,
+        ImageBackground,
 } from "react-native";
+import { StatusBar} from 'expo-status-bar';
 
-const LoginScreen = ({changeScreen}) => {
+const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -29,9 +31,14 @@ const LoginScreen = ({changeScreen}) => {
        Keyboard.dismiss();
        setEmail('');
        setPassword('');
+       navigation.navigate("Home", {
+        screen: 'PostsScreen'
+       });
     };
 
     return (
+     <View style={styles.bgWrap}>
+     <ImageBackground source={require("../../assets/bg-image.jpg")} style={styles.bgImage}>
      <KeyboardAvoidingView 
      behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.mainBox}>
       <View style={styles.container}>
@@ -50,16 +57,29 @@ const LoginScreen = ({changeScreen}) => {
        <Text style={styles.btnText}>Login</Text>
      </TouchableOpacity>
 
-     <TouchableOpacity style={styles.linkWrap} activeOpacity={0.5} onPress={() => changeScreen(1)}>
+     <TouchableOpacity style={styles.linkWrap} activeOpacity={0.5} onPress={() => navigation.navigate("Registration")}>
       <Text style={styles.linkText}>Don't have an account? Register</Text>
      </TouchableOpacity>
 
       </View>
      </KeyboardAvoidingView>
+     </ImageBackground>
+     <StatusBar style="auto"/>
+     </View>
     )
 }; 
 
 const styles = StyleSheet.create({
+    bgWrap: {
+        flex: 1,
+        alignItems: "center",
+    },
+    bgImage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: "flex-end",
+        width: "100%",
+    },
     mainBox: {
         justifyContent: "space-around",
     },

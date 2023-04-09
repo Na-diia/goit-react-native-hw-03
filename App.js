@@ -1,43 +1,19 @@
-import  React, {useState} from 'react';
-import { StatusBar} from 'expo-status-bar';
-import { StyleSheet, 
-        ImageBackground,
-        View, 
-        TouchableWithoutFeedback, 
-        Keyboard,  
-} from 'react-native';
+import  React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { TouchableWithoutFeedback, Keyboard, } from 'react-native';
 
-import  RegistrationScreen from './src/Screens/RegistrationScreen';
-import  LoginScreen from './src/Screens/LoginScreen';
+import Navigation from './src/Screens/Navigation';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [activeScreen, setActiveScreen] = useState(0);
-  
-  const changeScreen = (value) => {
-    setActiveScreen(value);
-  };
 
   return (
+    <NavigationContainer>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <View style={styles.container}>
-      <ImageBackground source={require("./assets/bg-image.jpg")} style={styles.image}>
-      {activeScreen === 0 ? (<LoginScreen changeScreen={changeScreen}/>) : (<RegistrationScreen changeScreen={changeScreen}/>)}
-      </ImageBackground>
-     <StatusBar style="auto"/>
-    </View>
+      <Navigation />
     </TouchableWithoutFeedback>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
-  image: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: "flex-end",
-    width: "100%",
-  },
-});
