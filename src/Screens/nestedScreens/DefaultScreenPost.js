@@ -27,12 +27,12 @@ export default function DefaultScreenPost({route, navigation}) {
              <Text style={styles.postText}>{item.title}</Text>
              <View style={styles.wrap}>
     
-            <TouchableOpacity style={styles.wrapSmall} activeOpacity={0.5} onPress={() => navigation.navigate("CommentsScreen")}>
+            <TouchableOpacity style={styles.wrapSmall} activeOpacity={0.5} onPress={() => navigation.navigate("Comments")}>
              <Feather name="message-circle" size={18} color="#BDBDBD" />
              <Text style={styles.comment}> { item.comment }</Text>
              </TouchableOpacity>
             
-            <TouchableOpacity style={styles.wrapSmall} activeOpacity={0.5} onPress={() => navigation.navigate("MapScreen", { location: item.location })}>
+            <TouchableOpacity style={styles.wrapSmall} activeOpacity={0.5} onPress={() => navigation.navigate("Map", { location: item.location })}>
              <EvilIcons name="location" size={24} color="#BDBDBD" />
              <Text style={styles.location}>{item.location}</Text>
              </TouchableOpacity>

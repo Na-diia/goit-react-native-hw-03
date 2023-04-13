@@ -1,7 +1,5 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Feather } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
 
 import DefaultScreenPost from "../nestedScreens/DefaultScreenPost";
 import MapScreen from "../nestedScreens/MapScreen";
@@ -14,9 +12,19 @@ export default function PostsScreen({navigation}) {
    return (
     <NestedScreen.Navigator initialRouteName="DefaultScreen" screenOptions={{headerShown: false}}>
       <NestedScreen.Screen name="DefaultScreen" component={DefaultScreenPost}/>
-      <NestedScreen.Screen name="MapScreen" component={MapScreen}/>
       <NestedScreen.Screen 
-        name="CommentsScreen" component={CommentsScreen}/>
+      options={{
+        headerShown: true,
+        headerTitleAlign: 'center',
+       
+      }} name="Map" component={MapScreen}/>
+      <NestedScreen.Screen 
+      options={{
+        headerShown: true,
+        headerTitleAlign: 'center',
+        navigationBarHidden: true,
+      }}
+        name="Comments" component={CommentsScreen}/>
     </NestedScreen.Navigator>
    )
 };

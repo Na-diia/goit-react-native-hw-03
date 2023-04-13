@@ -29,18 +29,8 @@ useEffect(() => {
               latitude: location.coords.latitude,
               longitude: location.coords.longitude,
           };
-          const locationRegion = await Location.reverseGeocodeAsync(
-              coordinates
-          );
-          const region = locationRegion[0].region;
-          const country = locationRegion[0].country;
-
-          setPost((state) => ({
-              ...state,
-              location: { coordinates, region, country },
-          }));
       } catch (error) {
-          console.log('error: ', message);
+          console.log('error: ', error.message);
       }
   };
 
