@@ -4,7 +4,7 @@ import { View, StyleSheet, ImageBackground, TextInput, Text, TouchableOpacity,
 } from "react-native";
 import { StatusBar} from 'expo-status-bar';
 
-const buttonImg = require('../../assets/images/add.png');
+const buttonImg = require('../../../assets/images/add.png');
 
 export default function RegistrationScreen ({navigation}) {
     const [isShowKeyboard, setIsShowKeyboard] = useState(false);
@@ -37,7 +37,7 @@ export default function RegistrationScreen ({navigation}) {
 
     return (
       <View style={styles.wrapBg}>
-      <ImageBackground source={require("../../assets/bg-image.jpg")} style={styles.bgImg}>
+      <ImageBackground source={require("../../../assets/bg-image.jpg")} style={styles.bgImg}>
      <KeyboardAvoidingView 
      behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.wrapKey}>
      <View style={styles.container} >

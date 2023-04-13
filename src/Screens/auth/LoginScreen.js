@@ -32,13 +32,13 @@ const LoginScreen = ({navigation}) => {
        setEmail('');
        setPassword('');
        navigation.navigate("Home", {
-        screen: 'PostsScreen'
+        screen: 'DefaultScreen'
        });
     };
 
     return (
      <View style={styles.bgWrap}>
-     <ImageBackground source={require("../../assets/bg-image.jpg")} style={styles.bgImage}>
+     <ImageBackground source={require("../../../assets/bg-image.jpg")} style={styles.bgImage}>
      <KeyboardAvoidingView 
      behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.mainBox}>
       <View style={styles.container}>

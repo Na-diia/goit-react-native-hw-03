@@ -3,15 +3,13 @@ import { StyleSheet, Text, View, Image, ScrollView, ImageBackground, TouchableOp
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-import posts from '../Data/posts';
-import Post from '../components/Post';
-import PostsScreen from "./PostsScreen";
-import CreatePostsScreen from "./CreatePostsScreen";
+import posts from '../../Data/posts';
+import Post from '../../components/Post';
 
-const forest = require('../../assets/images/forest.jpg');
-const bgImage = require('../../assets/bg-image.jpg');
-const avatar = require('../../assets/images/user-img.jpg');
-const crossBtn = require('../../assets/images/cross-btn.png');
+const forest = require('../../../assets/images/forest.jpg');
+const bgImage = require('../../../assets/bg-image.jpg');
+const avatar = require('../../../assets/images/user-img.jpg');
+const crossBtn = require('../../../assets/images/cross-btn.png');
 
 
 const ProfTabNav = createBottomTabNavigator();

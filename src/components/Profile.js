@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     marginTop: 32,
     marginBottom: 32,
+    paddingHorizontal: 8,
    },
    profImg: {
     width:60,

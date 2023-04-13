@@ -1,18 +1,17 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from '@expo/vector-icons'; 
-import { Feather } from '@expo/vector-icons';
+import { Ionicons, Feather} from '@expo/vector-icons'; 
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 
 import PostsScreen from "./PostsScreen";
-import CreatePostsScreen from "./CreatePostsScreen";
+import CreatePostsScreen from "./CreatePostScreen/CreatePostsScreen";
 import ProfileScreen from "./ProfileScreen";
 
 const MainTab = createBottomTabNavigator();
 
 export default function Home({navigation}) {
    return(
-    <MainTab.Navigator initialRouteName="Posts" screenOptions={{
+    <MainTab.Navigator initialRouteName="DefaultScreen" screenOptions={{
       tabBarShowLabel: false,
       tabBarStyle: {
         height: 80,
@@ -48,7 +47,6 @@ export default function Home({navigation}) {
       ) 
     }} 
     name="Posts" component={PostsScreen} />
-
 
     <MainTab.Screen 
       options={{
