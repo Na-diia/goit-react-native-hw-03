@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
+import { useIsFocused } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as Location from 'expo-location';
 import { Feather, AntDesign  } from '@expo/vector-icons';
@@ -7,11 +8,13 @@ import { View, Text, TextInput, TouchableOpacity, Image, TouchableWithoutFeedbac
 import {deleteBtn, addText, addBtnActive, addBtn, input, addPostForm, cameraWrap, underText, image, contentImg, container} from './CreateStyle';
 
 const CreatePost = ({navigation}) => {
-    const [camera, setCamera] = useState(null);
     const [photo, setPhoto] = useState(null);
     const [location, setLocation] = useState("");
     const [title, setTitle] = useState("");
     const [isKeyboard, setIsKeyboard] = useState(false);
+
+    const cameraRef= useRef();
+    const isFocused = useIsFocused();
 
 useEffect(() => {
     (async () => {
@@ -22,7 +25,9 @@ useEffect(() => {
     const getLocation = async () => {
       try {
           const { status } = await Camera.requestCameraPermissionsAsync();
-          setHasPermission(status === 'granted');
+          if(!status === 'granted'){
+            console.lod('Permission was not denied');
+          };
 
           const location = await Location.getCurrentPositionAsync({});
           const coordinates = {
@@ -40,7 +45,8 @@ useEffect(() => {
   const activeBtn = Boolean(photo && title && location);
 
   const takePhoto = async () => {
-    const photo = await camera.takePictureAsync();
+    if(photo) return;
+    const photo = await cameraRef.current.takePictureAsync();
     setPhoto(photo.uri);
     console.log("photo", photo);
   };
@@ -66,7 +72,7 @@ useEffect(() => {
          setIsKeyboard(false);
         }}>
         <View style={container}>
-    <Camera ref={setCamera} 
+    {isFocused  && (<Camera ref={cameraRef} 
         style={{...contentImg, 
         marginTop: isKeyboard ? 0 : 32, }} 
         type={CameraType.back}>
@@ -79,7 +85,7 @@ useEffect(() => {
         <TouchableOpacity activeOpacity={0.5} style={cameraWrap} onPress={takePhoto}>
         <AntDesign name="camera" size={24} color="#BDBDBD" />
        </TouchableOpacity>
-    </Camera>
+    </Camera>)}
      <Text style={underText}>{photo ? 'Edit photo' : 'Upload a photo, please!'}</Text>
       <View style={addPostForm}>
             <TextInput placeholder="Title..." 

@@ -16,13 +16,11 @@ export default function PostsScreen({navigation}) {
       options={{
         headerShown: true,
         headerTitleAlign: 'center',
-       
       }} name="Map" component={MapScreen}/>
       <NestedScreen.Screen 
       options={{
         headerShown: true,
         headerTitleAlign: 'center',
-        navigationBarHidden: true,
       }}
         name="Comments" component={CommentsScreen}/>
     </NestedScreen.Navigator>
