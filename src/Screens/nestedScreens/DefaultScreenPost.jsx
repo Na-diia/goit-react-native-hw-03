@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, View, FlatList, Text, Image, TouchableOpacity} from "react-native";
 import { Feather, EvilIcons } from '@expo/vector-icons';
 
@@ -6,7 +7,8 @@ import Profile from "../../components/Profile";
 
 const avatar = require('../../../assets/images/user-img.jpg');
 
-export default function DefaultScreenPost({route, navigation}) {
+export default function DefaultScreenPost({route}) {
+  const navigation = useNavigation();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {

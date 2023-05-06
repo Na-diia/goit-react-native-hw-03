@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
    },
    userName: {
+    fontFamily: 'Roboto-Regular',
     fontWeight: "700",
     fontSize: 13,
    },
