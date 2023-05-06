@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, Feather} from '@expo/vector-icons'; 
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 
-import PostsScreen from "./PostsScreen";
+import PostListScreen from "./PostListScreen";
 import CreatePostsScreen from "./CreatePostScreen/CreatePostsScreen";
 import ProfileScreen from "./ProfileScreen";
 
@@ -14,7 +14,7 @@ export default function Home() {
    const navigation = useNavigation();
 
    return(
-    <MainTab.Navigator initialRouteName="DefaultScreen" screenOptions={{
+    <MainTab.Navigator initialRouteName="PostListScreen" screenOptions={{
       tabBarShowLabel: false,
       tabBarStyle: {
         height: 80,
@@ -25,31 +25,15 @@ export default function Home() {
         borderTopWidth: 1,
         borderTopColor: "rgba(0, 0, 0, 0.2)",
       },
+      tabBarIcon: ({focused, size, color}) => {
+        return <Ionicons name="grid-outline" size={24} color="rgba(33, 33, 33, 0.8)" />
+      },
     }} >
     <MainTab.Screen 
     options={{
-      tabBarIcon: ({focused, size, color}) => {
-       return <Ionicons name="grid-outline" size={24} color="rgba(33, 33, 33, 0.8)" />
-      },
-      headerStyle : {
-        borderTopWidth: 1,
-        borderTopColor: "rgba(0, 0, 0, 0.2)",
-      },
-      headerTitleStyle: {
-        fontWeight: '500',
-        fontSize: 17,
-        color: "#212121",
-        marginBottom: 5,
-      },
-      headerTitleAlign: "center",
-      headerRightContainerStyle: { paddingRight: 20, marginBottom: 5},
-      headerRight: () => (
-       <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Login')}>
-        <Feather name="log-out" size={24} color="#BDBDBD" />
-       </TouchableOpacity>
-      ) 
+      headerShown: false,
     }} 
-    name="Posts" component={PostsScreen} />
+    name="PostListScreen" component={PostListScreen} />
 
     <MainTab.Screen 
       options={{

@@ -34,7 +34,7 @@ const LoginScreen = () => {
        setEmail('');
        setPassword('');
        navigation.navigate("Home", {
-        screen: 'DefaultScreen'
+        screen: 'PostListScreen'
        });
     };
 

@@ -7,7 +7,7 @@ import Profile from "../../components/Profile";
 
 const avatar = require('../../../assets/images/user-img.jpg');
 
-export default function DefaultScreenPost({route}) {
+export default function PostsScreen({route}) {
   const navigation = useNavigation();
   const [posts, setPosts] = useState([]);
 

@@ -26,7 +26,7 @@ export default function RegistrationScreen () {
       setEmail('');
       setPassword('');
       navigation.navigate("Home", {
-        screen: 'PostsScreen'
+        screen: 'PostListScreen'
        });
     };
 
